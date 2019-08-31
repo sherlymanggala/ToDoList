@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ToDoList</string>
+    <string name="dialog_delete_title">Delete an item</string>
+    <string name="dialog_delete_msg">Do you want to delete this item?</string>
+    <string name="delete">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit">Edit/Add Item</string>
+    <string name="label_item_title">Item Title</string>
+    <string name="label_item_text">Item Text</string>
+    <string name="btn_add_item">Add Item</string>
+    <string name="btn_save">Save</string>
+</resources>
