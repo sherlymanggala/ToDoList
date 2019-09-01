@@ -17,6 +17,8 @@ import android.widget.ListView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -83,12 +85,14 @@ public class MainActivity extends AppCompatActivity {
                 int position = data.getIntExtra("position", -1);
                 //ToDoItem editedItem = new ToDoItem(editedItemTitle, editedItemText, editedDate);
 
+                // Update all item's information
                 items.get(position).setToDoItemName(editedItemTitle);
                 items.get(position).setToDoItemText(editedItemText);
                 items.get(position).setToDoItemDateUpdated(dateFormat.format(editedDate));
-                //items.set(position, editedItem);
-//                Log.i("Updated Item in list:", editedItem + ",position:"
-//                        + position);
+
+                // After update the item, move the item to the top
+                Collections.swap(items, position, 0);
+
                 itemsAdapter.notifyDataSetChanged();
 
                 saveItemsToDatabase();
@@ -103,7 +107,10 @@ public class MainActivity extends AppCompatActivity {
                 Date newDate = new Date();
                 int position = data.getIntExtra("position", -1);
                 ToDoItem newToDo = new ToDoItem(newAddItem, newAddText, newDate, newDate);
-                items.add(newToDo);
+
+                // Insert new item to the top
+                items.add(0, newToDo);
+
                 Log.i("Updated Item in list:", newAddItem + ",position:"
                         + position);
                 itemsAdapter.notifyDataSetChanged();
