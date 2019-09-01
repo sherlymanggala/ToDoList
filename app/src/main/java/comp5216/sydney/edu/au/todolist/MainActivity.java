@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -78,8 +77,9 @@ public class MainActivity extends AppCompatActivity {
                 // Extract name value from result extras
                 String editedItemTitle = data.getExtras().getString("item");
                 String editedItemText = data.getExtras().getString("text");
+                Date editedDate = new Date();
                 int position = data.getIntExtra("position", -1);
-                ToDoItem editedItem = new ToDoItem(editedItemTitle, editedItemText);
+                ToDoItem editedItem = new ToDoItem(editedItemTitle, editedItemText, editedDate);
 
                 items.set(position, editedItem);
                 Log.i("Updated Item in list:", editedItem + ",position:"
@@ -95,8 +95,9 @@ public class MainActivity extends AppCompatActivity {
                 // Extract name value from result extras
                 String newAddItem = data.getExtras().getString("item");
                 String newAddText = data.getExtras().getString("text");
+                Date newDate = new Date();
                 int position = data.getIntExtra("position", -1);
-                ToDoItem newToDo = new ToDoItem(newAddItem, newAddText);
+                ToDoItem newToDo = new ToDoItem(newAddItem, newAddText, newDate, newDate);
                 items.add(newToDo);
                 Log.i("Updated Item in list:", newAddItem + ",position:"
                         + position);

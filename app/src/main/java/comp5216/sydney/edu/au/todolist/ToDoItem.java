@@ -1,7 +1,5 @@
 package comp5216.sydney.edu.au.todolist;
 
-import android.widget.ArrayAdapter;
-
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -34,13 +32,22 @@ public class ToDoItem {
         this.toDoItemText = toDoItemText;
     }
 
-    public ToDoItem(String toDoItemName, String toDoItemText, Date toDoItemDateCreated, Date toDoItemDateUpdated){
+    // Constructor for update Item
+    public ToDoItem(String toDoItemName, String toDoItemText, Date date){
 
         this.toDoItemName = toDoItemName;
         this.toDoItemText = toDoItemText;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        this.toDoItemDateCreated = dateFormat.format(toDoItemDateCreated);
-        this.toDoItemDateUpdated = dateFormat.format(toDoItemDateUpdated);
+        this.toDoItemDateUpdated = dateFormat.format(date);
+    }
+
+    // Constructor for add new Item
+    public ToDoItem(String toDoItemName, String toDoItemText, Date newDate, Date updateDate) {
+        this.toDoItemName = toDoItemName;
+        this.toDoItemText = toDoItemText;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        this.toDoItemDateCreated = dateFormat.format(newDate);
+        this.toDoItemDateUpdated = dateFormat.format(updateDate);
     }
 
     public int getToDoItemID() {
@@ -88,6 +95,6 @@ public class ToDoItem {
     }
 
     public String toString() {
-        return toDoItemName;
+        return toDoItemName + "\n\n" + toDoItemDateCreated + "\n" + toDoItemDateUpdated;
     }
 }

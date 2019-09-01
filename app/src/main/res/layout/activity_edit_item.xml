@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="comp5216.sydney.edu.au.todolist.EditToDoItemActivity">
 
@@ -10,6 +11,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit"
+        android:textSize="24dp"
+        />
+
+    <TextView
+        android:id="@+id/labelItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_item_title"
+        android:layout_below="@id/textView1"
+        android:layout_marginTop="15dp"
         />
 
     <EditText
@@ -17,17 +28,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/labelItemTitle"
         android:layout_alignParentLeft="true">
         <requestFocus/>
     </EditText>
 
+    <TextView
+        android:id="@+id/labelItemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etEditItem"
+        android:text="@string/label_item_text"
+        android:layout_marginTop="15dp"
+        />
+
     <EditText
         android:id="@+id/etEditItemText"
         android:layout_width="wrap_content"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_below="@+id/etEditItem"
+        android:layout_below="@+id/labelItemText"
         android:layout_alignParentLeft="true"
         android:hint="text here"
         />
