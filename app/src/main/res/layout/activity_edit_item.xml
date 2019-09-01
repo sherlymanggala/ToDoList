@@ -22,15 +22,36 @@
         <requestFocus/>
     </EditText>
 
+    <EditText
+        android:id="@+id/etEditItemText"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:ems="10"
+        android:layout_below="@+id/etEditItem"
+        android:layout_alignParentLeft="true"
+        android:hint="text here"
+        />
+
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etEditItem"
+        android:layout_below="@+id/etEditItemText"
         android:onClick="onSubmit"
         android:text="@string/btn_save"
         android:layout_marginTop="25dp"
         android:layout_alignLeft="@+id/etEditItem"
+        />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/btnSave"
+        android:layout_below="@+id/etEditItemText"
+        android:text="@string/cancel"
+        android:layout_marginTop="25dp"
+        android:onClick="onCancel"
         />
 
 </RelativeLayout>

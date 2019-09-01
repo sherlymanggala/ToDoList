@@ -1,14 +1,19 @@
 package comp5216.sydney.edu.au.todolist;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 public class EditToDoItemActivity extends Activity {
     public int position = 0;
     EditText etItem;
+    EditText etItemText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +24,15 @@ public class EditToDoItemActivity extends Activity {
 
         // Get the data from the main screen
         String editItem = getIntent().getStringExtra("item");
+        String editItemText = getIntent().getStringExtra("text");
         position = getIntent().getIntExtra("position", -1);
 
         // show original content in the text field
         etItem = findViewById(R.id.etEditItem);
+        etItemText = findViewById(R.id.etEditItemText);
+
         etItem.setText(editItem);
+        etItemText.setText(editItemText);
     }
 
     public void onSubmit(View v) {
@@ -34,10 +43,31 @@ public class EditToDoItemActivity extends Activity {
 
         // Pass relevant data back as a result
         data.putExtra("item", etItem.getText().toString());
+        data.putExtra("text", etItemText.getText().toString());
         data.putExtra("position", position);
 
         // Activity finished ok, return the data
         setResult(RESULT_OK, data); //set result code and bundle data for response
         finish(); // closes the activity, pass data to parent
+    }
+
+    public void onCancel(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(EditToDoItemActivity.this);
+        builder.setTitle(R.string.dialog_cancel_add_edit_title)
+                .setMessage(R.string.dialog_cancel_add_edit_msg)
+                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        setResult(RESULT_CANCELED, getIntent());
+                        finish();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // User cancelled the dialog
+                        // Nothing happens
+                    }
+                });
+
+        builder.create().show();
     }
 }

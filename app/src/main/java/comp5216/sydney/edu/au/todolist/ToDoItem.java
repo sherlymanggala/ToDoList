@@ -1,5 +1,7 @@
 package comp5216.sydney.edu.au.todolist;
 
+import android.widget.ArrayAdapter;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -14,6 +16,9 @@ public class ToDoItem {
 
     @ColumnInfo(name = "toDoItemName")
     private String toDoItemName;
+
+    @ColumnInfo(name = "toDoItemText")
+    private String toDoItemText;
 
     public ToDoItem(String toDoItemName){
 
@@ -38,5 +43,13 @@ public class ToDoItem {
     public void setToDoItemName(String toDoItemName) {
 
         this.toDoItemName = toDoItemName;
+    }
+
+    public void setToDoItemText(String toDoItemText) {
+        this.toDoItemText = toDoItemText;
+    }
+
+    public String getToDoItemText() {
+        return toDoItemText;
     }
 }
