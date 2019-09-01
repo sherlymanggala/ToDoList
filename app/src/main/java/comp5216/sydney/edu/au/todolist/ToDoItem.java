@@ -7,6 +7,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Entity(tableName = "todolist")
 public class ToDoItem {
     @PrimaryKey(autoGenerate = true)
@@ -20,15 +23,24 @@ public class ToDoItem {
     @ColumnInfo(name = "toDoItemText")
     private String toDoItemText;
 
-//    public ToDoItem(String toDoItemName){
-//
-//        this.toDoItemName = toDoItemName;
-//    }
+    @ColumnInfo(name = "toDoItemDateCreated")
+    private String toDoItemDateCreated;
 
-    public ToDoItem(String toDoItemName, String toDoItemText){
+    @ColumnInfo(name = "toDoItemDateUpdated")
+    private String toDoItemDateUpdated;
+
+    public ToDoItem(String toDoItemName, String toDoItemText) {
+        this.toDoItemName = toDoItemName;
+        this.toDoItemText = toDoItemText;
+    }
+
+    public ToDoItem(String toDoItemName, String toDoItemText, Date toDoItemDateCreated, Date toDoItemDateUpdated){
 
         this.toDoItemName = toDoItemName;
         this.toDoItemText = toDoItemText;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        this.toDoItemDateCreated = dateFormat.format(toDoItemDateCreated);
+        this.toDoItemDateUpdated = dateFormat.format(toDoItemDateUpdated);
     }
 
     public int getToDoItemID() {
@@ -57,5 +69,25 @@ public class ToDoItem {
 
     public String getToDoItemText() {
         return toDoItemText;
+    }
+
+    public void setToDoItemDateCreated(String toDoItemDateCreated) {
+        this.toDoItemDateCreated = toDoItemDateCreated;
+    }
+
+    public String getToDoItemDateCreated() {
+        return toDoItemDateCreated;
+    }
+
+    public void setToDoItemDateUpdated(String toDoItemDateUpdated) {
+        this.toDoItemDateUpdated = toDoItemDateUpdated;
+    }
+
+    public String getToDoItemDateUpdated() {
+        return toDoItemDateUpdated;
+    }
+
+    public String toString() {
+        return toDoItemName;
     }
 }

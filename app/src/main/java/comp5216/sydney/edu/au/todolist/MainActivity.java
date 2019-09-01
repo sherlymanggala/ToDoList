@@ -11,17 +11,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,15 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Reference the "listView" variable to the id "lstView" in the layout
         listView = findViewById(R.id.lstView);
-        //addItemEditText = findViewById(R.id.txtNewItem);
-
-        // Create an ArrayList of String
-        //items = new ArrayList<String>();
-        //items.add("item one");
-        //items.add("item two");
-
-        // Must call it before creating the adapter, because it references the right item list
-        //readItemsFromFile();
 
         // Create an instance of ToDoItemDB and Dao
         db = ToDoItemDB.getDatabase(this.getApplication().getApplicationContext());
@@ -110,13 +97,11 @@ public class MainActivity extends AppCompatActivity {
                 String newAddText = data.getExtras().getString("text");
                 int position = data.getIntExtra("position", -1);
                 ToDoItem newToDo = new ToDoItem(newAddItem, newAddText);
-                //items.add(newToDo);
                 items.add(newToDo);
                 Log.i("Updated Item in list:", newAddItem + ",position:"
                         + position);
                 itemsAdapter.notifyDataSetChanged();
 
-                //saveItemsToFile();
                 saveItemsToDatabase();
             }
         }
