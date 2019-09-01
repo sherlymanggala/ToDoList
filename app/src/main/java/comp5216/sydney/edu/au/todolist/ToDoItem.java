@@ -20,9 +20,15 @@ public class ToDoItem {
     @ColumnInfo(name = "toDoItemText")
     private String toDoItemText;
 
-    public ToDoItem(String toDoItemName){
+//    public ToDoItem(String toDoItemName){
+//
+//        this.toDoItemName = toDoItemName;
+//    }
+
+    public ToDoItem(String toDoItemName, String toDoItemText){
 
         this.toDoItemName = toDoItemName;
+        this.toDoItemText = toDoItemText;
     }
 
     public int getToDoItemID() {

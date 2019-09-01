@@ -11,7 +11,6 @@ public interface ToDoItemDao {
     @Query("SELECT * FROM todolist")
     List<ToDoItem> listAll();
 
-
     @Insert
     void insert(ToDoItem toDoItem);
 
