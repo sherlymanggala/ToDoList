@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -77,13 +78,17 @@ public class MainActivity extends AppCompatActivity {
                 // Extract name value from result extras
                 String editedItemTitle = data.getExtras().getString("item");
                 String editedItemText = data.getExtras().getString("text");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 Date editedDate = new Date();
                 int position = data.getIntExtra("position", -1);
-                ToDoItem editedItem = new ToDoItem(editedItemTitle, editedItemText, editedDate);
+                //ToDoItem editedItem = new ToDoItem(editedItemTitle, editedItemText, editedDate);
 
-                items.set(position, editedItem);
-                Log.i("Updated Item in list:", editedItem + ",position:"
-                        + position);
+                items.get(position).setToDoItemName(editedItemTitle);
+                items.get(position).setToDoItemText(editedItemText);
+                items.get(position).setToDoItemDateUpdated(dateFormat.format(editedDate));
+                //items.set(position, editedItem);
+//                Log.i("Updated Item in list:", editedItem + ",position:"
+//                        + position);
                 itemsAdapter.notifyDataSetChanged();
 
                 saveItemsToDatabase();
@@ -170,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                     items = new ArrayList<ToDoItem>();
                     if(itemsFromDB != null & itemsFromDB.size() > 0) {
                         for(ToDoItem item : itemsFromDB) {
-                            items.add(new ToDoItem(item.getToDoItemName(), item.getToDoItemText()));
+                            items.add(new ToDoItem(item.getToDoItemName(), item.getToDoItemText(), item.getToDoItemDateCreated(), item.getToDoItemDateUpdated()));
                             Log.d("list", items.toString());
                             Log.i("SQLite read item", "ID: " + item.getToDoItemID() + " Name: " + item.getToDoItemName());
                         }
@@ -191,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 //delete all items and re-insert
                 toDoItemDao.deleteAll();
                 for(ToDoItem todo : items) {
-                    ToDoItem item = new ToDoItem(todo.getToDoItemName(), todo.getToDoItemText());
+                    ToDoItem item = new ToDoItem(todo.getToDoItemName(), todo.getToDoItemText(), todo.getToDoItemDateCreated(), todo.getToDoItemDateUpdated());
                     toDoItemDao.insert(item);
                     Log.d("item: ", item.toString());
                     //Log.i("SQLite saved item", todo);

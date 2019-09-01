@@ -21,7 +21,7 @@
     <ListView
         android:id="@+id/lstView"
         android:layout_width="390dp"
-        android:layout_height="560dp"
+        android:layout_height="530dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
