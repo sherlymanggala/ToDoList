@@ -1,7 +1,5 @@
 package comp5216.sydney.edu.au.todolist;
 
-import org.apache.commons.io.FileUtils;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +15,6 @@ import android.widget.ListView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;

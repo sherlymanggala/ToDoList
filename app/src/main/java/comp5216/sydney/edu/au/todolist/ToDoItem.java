@@ -27,15 +27,6 @@ public class ToDoItem {
     @ColumnInfo(name = "toDoItemDateUpdated")
     private String toDoItemDateUpdated;
 
-    // Constructor for update Item
-    public ToDoItem(String toDoItemName, String toDoItemText, Date date){
-
-        this.toDoItemName = toDoItemName;
-        this.toDoItemText = toDoItemText;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        this.toDoItemDateUpdated = dateFormat.format(date);
-    }
-
     // Constructor for add new Item
     public ToDoItem(String toDoItemName, String toDoItemText, Date newDate, Date updateDate) {
         this.toDoItemName = toDoItemName;
@@ -45,6 +36,7 @@ public class ToDoItem {
         this.toDoItemDateUpdated = dateFormat.format(updateDate);
     }
 
+    // Constructor for date in String type
     public ToDoItem(String toDoItemName, String toDoItemText, String toDoItemDateCreated, String toDoItemDateUpdated) {
         this.toDoItemName = toDoItemName;
         this.toDoItemText = toDoItemText;

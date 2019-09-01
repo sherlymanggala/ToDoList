@@ -1,6 +1,5 @@
 package comp5216.sydney.edu.au.todolist;
 
-
 import android.content.Context;
 
 import androidx.room.Database;
